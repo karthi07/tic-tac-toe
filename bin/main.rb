@@ -3,7 +3,6 @@
 require 'io/console'
 
 class BoardGame
-
   def initialize
     @the_board = {
       1 => ' ', 2 => ' ', 3 => ' ',
@@ -22,7 +21,7 @@ class BoardGame
 
     move = Integer(move)
     @the_board[move] = turn
-    return res
+    res
   end
 
   def puts_center(str)
@@ -30,19 +29,19 @@ class BoardGame
     puts String.new(' ' * padding) + str
   end
 
-  def print_board()
+  def print_board() # rubocop:disable Metrics/AbcSize
     board = @the_board
     str1 = (' ' * 7) + '|' + (' ' * 7) + '|' + (' ' * 7)
     str2 = (' ' * 3) + '|' + (' ' * 3)
     str3 = (' ' * 3)
-    str4 = ('-' * 7)+'+'+('-' * 7)+'+'+('-' * 7)
+    str4 = ('-' * 7) + '+' + ('-' * 7) + '+'+('-' * 7)
     puts_center(str1)
     puts_center(str3 + board[1] + str2 + board[2] + str2 + board[3] + str3)
     puts_center(str1)
 
     puts_center(str4)
     puts_center(str1)
-    puts_center(str3 + board[4] + str2 + board[5]+ str2 + board[6] + str3)
+    puts_center(str3 + board[4] + str2 + board[5] + str2 + board[6] + str3)
     puts_center(str1)
 
     puts_center(str4)
@@ -60,15 +59,15 @@ play1 = BoardGame.new
 i = 0
 while i < 9
   puts play1.print_board
-  puts'Turn for ' + turn + '. Move on which space?'
+  puts 'Turn for ' + turn + '. Move on which space?'
   puts 'available space 1 2 3 4 5 6 7 8 9'
-  move = (gets.chomp).to_i
+  move = gets.chomp.to_i
 
-  while (play1.add_move(move,turn) != "added")
+  while play1.add_move(move, turn) != 'added'
     puts "Its a invalid move. Enter valid move \n"
-    puts'Turn for ' + turn + '. Move on which space?'
+    puts 'Turn for ' + turn + '. Move on which space?'
     puts 'available space 1 2 3 4 5 6 7 8 9'
-    move = (gets.chomp).to_i
+    move = gets.chomp.to_i
   end
   turn = turn == 'X' ? 'O' : 'X'
   i += 1
