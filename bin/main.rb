@@ -34,7 +34,7 @@ class BoardGame
     str1 = (' ' * 7) + '|' + (' ' * 7) + '|' + (' ' * 7)
     str2 = (' ' * 3) + '|' + (' ' * 3)
     str3 = (' ' * 3)
-    str4 = ('-' * 7) + '+' + ('-' * 7) + '+'+('-' * 7)
+    str4 = ('-' * 7) + '+' + ('-' * 7) + '+' + ('-' * 7)
     puts_center(str1)
     puts_center(str3 + board[1] + str2 + board[2] + str2 + board[3] + str3)
     puts_center(str1)
