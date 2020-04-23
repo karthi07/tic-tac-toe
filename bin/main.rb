@@ -2,58 +2,45 @@
 
 require 'io/console'
 
-SCREEN_SIZE = IO.console.winsize
-$SCREEN_HEIGHT =  SCREEN_SIZE[0]
-$SCREEN_WIDTH =  SCREEN_SIZE[1]
-
 class BoardGame
 
   attr_accessor :the_board
 
+
   def initialize
+    @the_board = { 1 => ' ', 2 => ' ', 3 => ' ',
+      4 => ' ', 5 => ' ', 6 => ' ',
+      7 => ' ', 8 => ' ', 9 => ' ' }
+    @SCREEN_SIZE = IO.console.winsize
+    @SCREEN_HEIGHT = @SCREEN_SIZE[0]
+    @SCREEN_WIDTH = @SCREEN_SIZE[1]
 
-    @x = 2
-    @the_board = { 1 => ' ', 2 => ' ', 3=> ' ',
-    4 => ' ', 5 => ' ', 6 => ' ',
-    7 => ' ', 8 => ' ', 9 => ' '}
-
-    @winning = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [6,4,2]]
-
+    @winning = [[0,  1,  2],  [3, 4, 5],  [6, 7, 8],  [0, 3, 6],  [1, 4, 7],  [2, 5, 8],  [0, 4, 8],  [6, 4, 2]]
   end
 
   def add_move(move, turn)
-    if move.is_a? Integer 
-      move = Integer(move)
-
-    else
-      return "Error"
-    end
-    if @the_board[move] == ' ' && ([1,2,3,4,5,6,7,8,9].include? move )
-      move = Integer(move)
-      @the_board[move] = turn
-      return "added"
-    else 
-      return "Error"
-    end
+    return 'Error' unless @the_board[move] == ' ' && ([1, 2, 3, 4, 5, 6, 7, 8, 9].include? move)
+    move = Integer(move)
+    @the_board[move] = turn
+    return 'added'
   end
-
 
   def init_cell_size(cs)
     cs = ((cs / 2 ) * 2) + 1
-    if $SCREEN_HEIGHT < ((cs * 3) + 10)
-      cs = (($SCREEN_HEIGHT / 2) - 10) / 3
+    if @SCREEN_HEIGHT < ((cs * 3) + 10)
+      cs = ((@SCREEN_HEIGHT / 2) - 10) / 3
     end
-    if $SCREEN_WIDTH < ((cs * 3 * 2) + 2)
-      cs = (($SCREEN_WIDTH / 2) - 2) / 6
+    if @SCREEN_WIDTH < ((cs * 3 * 2) + 2)
+      cs = ((@SCREEN_WIDTH / 2) - 2) / 6
     end
-    if $SCREEN_HEIGHT < ((cs * 3) + 10)
-      cs = (($SCREEN_HEIGHT / 2) - 10) / 3
+    if @SCREEN_HEIGHT < ((cs * 3) + 10)
+      cs = ((@SCREEN_HEIGHT / 2) - 10) / 3
     end
     cs
   end
 
   def puts_center(str)
-    padding = ($SCREEN_WIDTH - str.size) / 2
+    padding = (@SCREEN_WIDTH - str.size) / 2
     puts String.new(" " * padding) + str
   end
 
