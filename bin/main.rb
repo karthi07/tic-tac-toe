@@ -1,15 +1,13 @@
 #!/usr/bin/env ruby
 
 require 'io/console'
-require_relative 'BoardGame'
-
+require_relative 'game_logic'
 
 def puts_center(str)
   @screen_width = IO.console.winsize[1]
   padding = (@screen_width - str.size) / 2
   puts String.new(' ' * padding) + str
 end
-
 
 def print_board(board) # rubocop:disable Metrics/AbcSize
   str1 = (' ' * 7) + '|' + (' ' * 7) + '|' + (' ' * 7)
