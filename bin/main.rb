@@ -16,7 +16,7 @@ class BoardGame
   end
 
   def check_winning
-    win = nil
+    win = false
     place1 = @the_board[1]
     place2 = @the_board[2]
     place3 = @the_board[3]
