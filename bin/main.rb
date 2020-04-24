@@ -47,7 +47,7 @@ def game_play(play1)
     turn = turn == 'X' ? 'O' : 'X'
     res = play1.check_winning
     if res
-      puts_center( res + " won the Game \n\n\n")
+      puts_center(res + " won the Game \n\n\n")
       break
     end
     i += 1
@@ -65,4 +65,8 @@ while choice != 'n' && choice == 'y'
   game_play(play1)
   puts 'do you want to restart the game ? (y/n)'
   choice = gets.chomp
+end
+while choice == 'n'
+  puts 'game-ends re run file to resume'
+  break
 end
