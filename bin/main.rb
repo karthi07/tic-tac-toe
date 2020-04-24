@@ -17,11 +17,12 @@ class BoardGame
 
   def check_winning
     win = false
-    place1 = @the_board[1]
-    place2 = @the_board[2]
-    place3 = @the_board[3]
-
-    win = place1 if place1 == place2 && place2 == place3 && place1 != ' '
+    @winning.each do |win_arr|
+      place1 = @the_board[win_arr[0] + 1]
+      place2 = @the_board[win_arr[1] + 1]
+      place3 = @the_board[win_arr[2] + 1]
+      win = place1 if place1 == place2 && place2 == place3 && place1 != ' '
+    end
     win
   end
 
@@ -59,34 +60,52 @@ class BoardGame
     puts_center(str3 + board[7] + str2 + board[8] + str2 + board[9] + str3)
     puts_center(str1)
   end
+
+  def game_play
+    turn = 'X'
+    res = false
+    i = 0
+    while i < 9
+      puts print_board
+      puts 'Turn for ' + turn + '. Move on which space?'
+      puts 'available space 1 2 3 4 5 6 7 8 9'
+      move = gets.chomp.to_i
+
+      while add_move(move, turn) != 'added'
+        puts "Its a invalid move. Enter valid move \n"
+        puts 'Turn for ' + turn + '. Move on which space?'
+        puts 'available space 1 2 3 4 5 6 7 8 9'
+        move = gets.chomp.to_i
+      end
+      turn = turn == 'X' ? 'O' : 'X'
+      res = check_winning
+      if res
+        puts "\n\n\n   ", res, " won the Game \n"
+        break
+      end
+      i += 1
+    end
+    puts 'Game tied' unless res
+    print_board
+  end
+
+  def clean_board
+    @the_board = {
+      1 => ' ', 2 => ' ', 3 => ' ',
+      4 => ' ', 5 => ' ', 6 => ' ',
+      7 => ' ', 8 => ' ', 9 => ' '
+    }
+  end
 end
 
 # default first player
-turn = 'X'
-
 play1 = BoardGame.new
-
-res = false
-i = 0
-while i < 9
-  puts play1.print_board
-  puts 'Turn for ' + turn + '. Move on which space?'
-  puts 'available space 1 2 3 4 5 6 7 8 9'
-  move = gets.chomp.to_i
-
-  while play1.add_move(move, turn) != 'added'
-    puts "Its a invalid move. Enter valid move \n"
-    puts 'Turn for ' + turn + '. Move on which space?'
-    puts 'available space 1 2 3 4 5 6 7 8 9'
-    move = gets.chomp.to_i
-  end
-  turn = turn == 'X' ? 'O' : 'X'
-  res = play1.check_winning
-  if res
-    puts "\n\n\n   ", res, " won the Game \n"
-    break
-  end
-  i += 1
+play1.game_play
+puts 'do you want to restart the game ? (y/n)'
+choice = gets.chomp
+while choice != 'n' && choice == 'y'
+  play1.clean_board
+  play1.game_play
+  puts 'do you want to restart the game ? (y/n)'
+  choice = gets.chomp
 end
-puts 'Game tied' unless res
-play1.print_board
