@@ -21,9 +21,7 @@ class BoardGame
     place2 = @the_board[2]
     place3 = @the_board[3]
 
-    if place1 == place2 && place2 == place3 && place1 != ' '
-      win = place1
-    end
+    win = place1 if place1 == place2 && place2 == place3 && place1 != ' '
     win
   end
 
@@ -68,6 +66,7 @@ turn = 'X'
 
 play1 = BoardGame.new
 
+res = false
 i = 0
 while i < 9
   puts play1.print_board
@@ -84,9 +83,10 @@ while i < 9
   turn = turn == 'X' ? 'O' : 'X'
   res = play1.check_winning
   if res
-    puts "\n\n\n   ",res," won the Game \n"
+    puts "\n\n\n   ", res, " won the Game \n"
     break
   end
   i += 1
 end
+puts "Game tied" unless res
 play1.print_board
