@@ -88,5 +88,5 @@ while i < 9
   end
   i += 1
 end
-puts "Game tied" unless res
+puts ''Game tied' unless res
 play1.print_board
