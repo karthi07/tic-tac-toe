@@ -1,12 +1,10 @@
-class BoardGame
+require_relative('board')
+
+class BoardGame < Board
   attr_reader :the_board
 
   def initialize
-    @the_board = {
-      1 => ' ', 2 => ' ', 3 => ' ',
-      4 => ' ', 5 => ' ', 6 => ' ',
-      7 => ' ', 8 => ' ', 9 => ' '
-    }
+    super
 
     @winning = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [6, 4, 2]]
   end
@@ -29,13 +27,5 @@ class BoardGame
     move = Integer(move)
     @the_board[move] = turn
     res
-  end
-
-  def restart_game
-    @the_board = {
-      1 => ' ', 2 => ' ', 3 => ' ',
-      4 => ' ', 5 => ' ', 6 => ' ',
-      7 => ' ', 8 => ' ', 9 => ' '
-    }
   end
 end

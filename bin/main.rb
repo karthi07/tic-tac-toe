@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'io/console'
-require_relative 'game_logic'
+require './lib/board_game'
 
 def puts_center(str)
   @screen_width = IO.console.winsize[1]
