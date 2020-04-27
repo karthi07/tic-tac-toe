@@ -29,7 +29,7 @@ def print_board(board) # rubocop:disable Metrics/AbcSize
   puts_center(str1)
 end
 
-def game_play(play1)
+def game_play(play1) # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
   turn = 'X'
   rules = "This is a tic-tac-toe game played between two people it is a board game of 3 horizontal
   vertical and two diagonal spaces. It involves choosing a game character X or O to fill up the spaces, if any
