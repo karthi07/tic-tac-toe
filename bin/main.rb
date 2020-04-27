@@ -29,7 +29,7 @@ def print_board(board) # rubocop:disable Metrics/AbcSize
   puts_center(str1)
 end
 
-def game_play(play1)
+def game_play(play1) # rubocop:disable Metrics/MethodLength
   turn = 'X'
   res = false
   board = play1.the_board
