@@ -14,5 +14,4 @@ class Board
       7 => ' ', 8 => ' ', 9 => ' '
     }
   end
-
 end
