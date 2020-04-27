@@ -29,14 +29,32 @@ def print_board(board) # rubocop:disable Metrics/AbcSize
   puts_center(str1)
 end
 
-def game_play(play1) # rubocop:disable Metrics/MethodLength
+def game_play(play1)
   turn = 'X'
+  rules = "This is a tic-tac-toe game played between two people it is a board game of 3 horizontal
+  vertical and two diagonal spaces. It involves choosing a game character X or O to fill up the spaces, if any
+  player is able to fill the empty spaces with his/her character horizontaly, vertically or diagonally
+  a winner emerges and we start again and if there\'s a tie, we start the game again."
+  puts rules
   res = false
+  puts ' '
+  puts 'player 1 whats your name'
+  puts ' '
+  player1 = gets.chomp
+  puts ' '
+  puts player1 + ' will be playing with X'
+  puts ' '
+  puts 'player2 whats your name'
+  puts ' '
+  player2 = gets.chomp
+  puts ' '
+  player = player1
+  puts player2 + ' will be playing with O'
   board = play1.the_board
   i = 0
   while i < 9
     puts print_board(board)
-    puts 'Turn for ' + turn + '. Move on which space?'
+    puts player + ' your turn, remember you\'re using ' + turn + '  Move on which space?'
     puts 'available space 1 2 3 4 5 6 7 8 9'
     move = gets.chomp.to_i
 
@@ -44,6 +62,7 @@ def game_play(play1) # rubocop:disable Metrics/MethodLength
       puts "Its a invalid move. Enter valid move \n"
       move = gets.chomp.to_i
     end
+    player = player == player1 ? player2 : player1
     turn = turn == 'X' ? 'O' : 'X'
     res = play1.check_winning
     if res
@@ -67,6 +86,6 @@ while choice != 'n' && choice == 'y'
   choice = gets.chomp
 end
 while choice == 'n'
-  puts 'game-ends re run file to resume'
+  puts 'game-ends re-run file to resume'
   break
 end
