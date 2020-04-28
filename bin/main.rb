@@ -4,11 +4,8 @@ require 'io/console'
 require './lib/board_game'
 
 class GamePlay < BoardGame
-
   def initialize
     super
-    @player1 = ""
-    @player2 = ""
   end
 
   def puts_center(str)
@@ -37,7 +34,7 @@ class GamePlay < BoardGame
     puts_center(str1)
   end
 
-  def get_player_move(player,turn)
+  def get_player_move(player, turn)
     puts player + ' your turn, remember you\'re using ' + turn + '  Move on which space?'
     puts 'available space 1 2 3 4 5 6 7 8 9'
     move = gets.chomp.to_i
@@ -48,7 +45,7 @@ class GamePlay < BoardGame
     end
   end
 
-  def get_player_names
+  def player_names # rubocop:disable Metrics/MethodLength
     rules = "This is a tic-tac-toe game played between two people it is a board game of 3 horizontal
     vertical and two diagonal spaces. It involves choosing a game character X or O to fill up the spaces, if any
     player is able to fill the empty spaces with his/her character horizontaly, vertically or diagonally
@@ -58,7 +55,7 @@ class GamePlay < BoardGame
     puts 'player 1 whats your name'
     puts ' '
     player1 = gets.chomp
-    while player1.length == 0
+    while player1.length.zero?
       puts "Name cant be blank. Enter a valid name \n"
       player1 = gets.chomp
     end
@@ -68,26 +65,26 @@ class GamePlay < BoardGame
     puts 'player2 whats your name'
     puts ' '
     player2 = gets.chomp
-    while player2.length == 0
+    while player2.length.zero?
       puts "Name cant be blank. Enter a valid name \n"
       player2 = gets.chomp
     end
     puts ' '
     puts player2 + ' will be playing with O'
-    return player1, player2
+    [player1, player2]
   end
 
-  def game_play() # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
+  def game_play() # rubocop:disable Metrics/MethodLength
     turn = 'X'
-    players = get_player_names()
+    players = player_names
     player1 = players[0]
     player2 = players[1]
     player = player1
     res = false
     i = 0
     while i < 9
-      print_board()
-      get_player_move(player,turn)
+      print_board
+      get_player_move(player, turn)
       player = player == player1 ? player2 : player1
       turn = turn == 'X' ? 'O' : 'X'
       res = check_winning
@@ -98,7 +95,7 @@ class GamePlay < BoardGame
       i += 1
     end
     puts_center('Game tied') unless res
-    print_board()
+    print_board
     restart_game
   end
 end
