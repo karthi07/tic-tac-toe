@@ -25,7 +25,7 @@ class BoardGame < Board
     res = 'Error' unless @the_board[move] == ' ' && ([1, 2, 3, 4, 5, 6, 7, 8, 9].include? move)
 
     move = Integer(move)
-    @the_board[move] = turn
+    @the_board[move] = turn if res != 'Error'
     res
   end
 end
