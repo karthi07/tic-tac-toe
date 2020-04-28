@@ -1,14 +1,19 @@
 # tic-tac-toe
 
- This is a collaborative project about building a simple tic-tac-toe game. it is basically about
+ This is a collaborative project about building a simple tic-tac-toe game. it is basically
   applying object oriented programming concepts in ruby using classes, instances and methods to create the interface and game logic
  
- The game is comprises a minimum and maximum of two players. Each player chooses a separate character X or O. The board has 9 spaces of which 3 are horizonal, vertical and 2 diagonal. when a player uses his/her character to fill up three spaces, either diagonal, horizontal or vetical before the other, a winner emerges and the game restarts if there's no winner(a tie), the game ends and restarts
+ The game comprises a minimum and maximum of two players. Each player chooses a separate character X or O. The board has 9 spaces of which 3 are horizonal, vertical and 2 diagonal. when a player uses his/her character to fill up three spaces, either diagonal, horizontal or vetical before the other, a winner emerges and the game restarts if there's no winner(a tie), the game ends and restarts
 
  The rules include:
  1 The game must be played in turns i.e only one player at a time
  2 One player to a character
  3 once a move is made on a space, it can't be unmade. i.e space positions can't be changed
+
+#Running the file
+step 1  Start the game by running the terminal
+
+step 2 Enter "ruby bin/main.rb"
 
 # Built With
 
