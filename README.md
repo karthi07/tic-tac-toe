@@ -17,7 +17,7 @@ step 1: Fork/Clone this project to your local machine
 
 step 2: Start the terminal and move to the project directory
 
-step 3: Enter "ruby bin/main.rb"
+step 3: Enter "ruby bin/main.rb start"
 
 \*ruby has to be installed to run the project
 
