@@ -76,7 +76,7 @@ class GamePlay < BoardGame
   end
 
   def check_result(res, ind)
-    result = ''
+    result = nil
     if res
       puts_center("\n\n \t\t\t #{res} won the Game \n\n\n")
       result = 'win'
@@ -87,7 +87,7 @@ class GamePlay < BoardGame
     result
   end
 
-  def game_play() # rubocop:disable Metrics/MethodLength
+  def game_play()
     turn = 'X'
     players = player_names
     player1 = players[0]

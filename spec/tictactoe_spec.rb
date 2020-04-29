@@ -86,6 +86,11 @@ describe GamePlay do
       i = 8
       expect(test_play.check_result(res, i)).to eql('tied')
     end
+    it 'Return nil , if the no one won and game not tied' do
+      res = false
+      i = 4
+      expect(test_play.check_result(res, i)).to eql(nil)
+    end
   end
 
   # describe '#get_player_move' do
