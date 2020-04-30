@@ -1,4 +1,4 @@
-require('./bin/main.rb')
+require_relative('../bin/main.rb')
 
 test_play = GamePlay.new
 describe BoardGame do
@@ -90,12 +90,6 @@ describe GamePlay do
       res = false
       i = 4
       expect(test_play.check_result(res, i)).to eql(nil)
-    end
-  end
-
-  describe '#get_player_move' do
-    it 'Get Player move:the function expects the user to make a move by typing a number 7' do
-      expect(test_play.get_player_move('karthi', 'X')).to eql(7)
     end
   end
 end
