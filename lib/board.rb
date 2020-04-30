@@ -1,10 +1,6 @@
 class Board
   def initialize
-    @the_board = {
-      1 => ' ', 2 => ' ', 3 => ' ',
-      4 => ' ', 5 => ' ', 6 => ' ',
-      7 => ' ', 8 => ' ', 9 => ' '
-    }
+    restart_game
   end
 
   def restart_game
