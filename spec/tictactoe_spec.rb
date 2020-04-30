@@ -93,9 +93,9 @@ describe GamePlay do
     end
   end
 
-  # describe '#get_player_move' do
-  #   it 'Get Player move' do
-  #     expect(test_play.get_player_move('karthi', 'X')).to eql(7)
-  #   end
-  # end
+  describe '#get_player_move' do
+    it 'Get Player move:the function expects the user to make a move by typing a number 7' do
+      expect(test_play.get_player_move('karthi', 'X')).to eql(7)
+    end
+  end
 end
