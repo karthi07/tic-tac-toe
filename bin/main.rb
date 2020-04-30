@@ -5,6 +5,7 @@ require './lib/board_game'
 
 class GamePlay < BoardGame
   def initialize
+    @rules_given = false
     super
   end
 
@@ -47,11 +48,14 @@ class GamePlay < BoardGame
   end
 
   def player_names # rubocop:disable Metrics/MethodLength
-    rules = "This is a tic-tac-toe game played between two people it is a board game of 3 horizontal
-    vertical and two diagonal spaces. It involves choosing a game character X or O to fill up the spaces, if any
-    player is able to fill the empty spaces with his/her character horizontaly, vertically or diagonally
-    a winner emerges and we start again and if there\'s a tie, we start the game again."
-    puts rules
+    unless @rules_given
+      rules = "This is a tic-tac-toe game played between two people it is a board game of 3 horizontal
+      vertical and two diagonal spaces. It involves choosing a game character X or O to fill up the spaces, if any
+      player is able to fill the empty spaces with his/her character horizontaly, vertically or diagonally
+      a winner emerges and we start again and if there\'s a tie, we start the game again."
+      puts rules
+    end
+    @rules_given = true
     puts ' '
     puts 'player 1 whats your name'
     puts ' '

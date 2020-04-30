@@ -32,22 +32,22 @@ describe BoardGame do
       turn = 'X'
       expect(test_play.add_move(move, turn)).to eql('added')
     end
-    it 'Thorw error if the move is out the valid move range' do
+    it 'Throw error if the move is out the valid move range' do
       move = 120
       turn = 'O'
       expect(test_play.add_move(move, turn)).to eql('Error')
     end
-    it 'Thorw error if the move if place is already occupied by same player' do
+    it 'Throw error if the move if place is already occupied by same player' do
       move = 1
       turn = 'X'
       expect(test_play.add_move(move, turn)).to eql('Error')
     end
-    it 'Thorw error if the move if place is already occupied by different player' do
+    it 'Throw error if the move if place is already occupied by different player' do
       move = 1
       turn = 'O'
       expect(test_play.add_move(move, turn)).to eql('Error')
     end
-    it 'Thorw error if the move is not an integer (might be plain enter character)' do
+    it 'Throw error if the move is not an integer (might be plain enter character)' do
       move = 'abas'.to_i
       turn = 'X'
       expect(test_play.add_move(move, turn)).to eql('Error')
@@ -58,9 +58,9 @@ end
 describe Board do
   describe '#restart_game' do
     it 'Reset the the_board hash, to start a new game' do
-      test_play.the_board[8] = 'X'
+      test_play.the_board[5] = 'X'
       test_play.restart_game
-      expect(test_play.the_board[8]).to eql(' ')
+      expect(test_play.the_board[5]).to eql(' ')
     end
     it 'the_board hash preserves data if restart_game not called' do
       test_play.the_board[8] = 'X'
